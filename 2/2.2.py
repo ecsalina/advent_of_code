@@ -15,3 +15,11 @@ for line in file:
     total += game["red"] * game["blue"] * game["green"]
 
 print(total)
+
+
+#Using regex because why not
+import re
+
+file = open("input.txt", "r")
+
+[re.match("Game (?<group_id>\d+):(();?)+
