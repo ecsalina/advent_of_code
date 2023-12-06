@@ -35,39 +35,3 @@ for posn, char in enumerate(text):
         posns = []
 
 print(total)
-
-
-#part 2
-
-gears = {}
-ratios = 0
-
-value = None
-posns = []
-for posn, char in enumerate(text):
-    if char in digits:
-        if value is not None:
-            value *= 10
-            value += int(char)
-        else:
-            value = int(char)
-        posns.append(posn)
-    elif value is not None:
-        #pinch off number and perform symbol check
-        posns += [posns[0]-1, posns[-1]+1] #wrong somehow
-        check_posns += [posn+141 for posn in posns]
-        check_posns += [posn-141 for posn in posns]
-        for check_posn in check_posns:
-            try:
-                if text[check_posn] == "*":
-                    if check_posn in gears:
-                        ratios += gears[check_posn]*value
-                    else:
-                        gears[check_posn] = value
-                    break #should break?
-            except:
-                continue
-        value = None
-        posns = []
-
-print(ratios)
