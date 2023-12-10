@@ -32,3 +32,28 @@ for i in range(max_time):
 num_combos = max_time - 2*i + 1
 
 print(num_combos)
+
+
+#part 2 analytic soln
+
+"""
+i*(max_time-i) > record_distance
+
+-i^2 + max_time*i - record_distance > 0
+
+(-b +- sqrt(b^2 - 4ac))/(2a)
+
+(-max_time +- sqrt(max_time^2 - 4(-1)(-record_distance)))/(2*(-1))
+(max_time +- sqrt(max_time^2 - 4*record_distance))/2
+
+(max_time - sqrt(max_time^2 - 4record_distance))/2 < i < (max_time + sqrt(max_time^2 - 4record_distance))/2
+
+The length of i as segment of domain is:
+
+(max_time + sqrt(max_time^2 - 4record_distance))/2 - (max_time - sqrt(max_time^2 - 4record_distance))/2
+sqrt(max_time^2 - 4record_distance)
+
+"""
+import math
+num_combos = math.ceil(math.sqrt(max_time**2 - 4*record_distance))
+print(num_combos)
